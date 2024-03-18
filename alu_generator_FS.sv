@@ -19,11 +19,11 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 
-class alu_generator extends uvm_sequence#(transaction);
+class alu_generator extends uvm_sequence#(alu_transaction);
   `uvm_object_utils(alu_generator)
   
     int i=0;
-    transaction alu_tr;
+    alu_transaction alu_tr;
     int arithmetic [$]='{0,1,7};
     int logical [$]='{4,5,6};
     int counter [$]='{3,4};
@@ -36,7 +36,7 @@ class alu_generator extends uvm_sequence#(transaction);
    virtual task body(); 
      repeat(1)
      begin
-       alu_tr = transaction::type_id::create("alu_tr");
+       alu_tr =alu_transaction::type_id::create("alu_tr");
        repeat(arithmetic.size())
           begin
             start_item(alu_tr);
